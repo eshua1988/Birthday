@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  Birthday
-//
-//  Created by Olekssandr on 05/11/2024.
-//
+
 
 import UIKit
 
@@ -12,8 +7,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let lable = UILabel()
+        lable.text = "1234"
     }
-
-
 }
 
