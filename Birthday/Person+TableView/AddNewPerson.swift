@@ -11,9 +11,7 @@ import Foundation
 class AddNewPerson: UIViewController {
     
     weak var delegate : ViewControllerDelegate?
-    
     var dateBirthday = NSDate()
-    
     let datePicker: UIDatePicker = {
         let date = UIDatePicker()
         if #available(iOS 13.4, *) {
@@ -55,6 +53,15 @@ class AddNewPerson: UIViewController {
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         return phoneTextField
     }()
+    let mailTextField: UITextField = {
+        let emeilTextField = UITextField()
+        emeilTextField.layer.cornerRadius = 10
+        emeilTextField.backgroundColor = .systemGray6
+        emeilTextField.placeholder = "E-mail person"
+        emeilTextField.textAlignment = .center
+        emeilTextField.translatesAutoresizingMaskIntoConstraints = false
+        return emeilTextField
+    }()
     let dateTextField: UITextField = {
         let datePicer = UITextField()
         datePicer.layer.cornerRadius = 10
@@ -72,7 +79,7 @@ class AddNewPerson: UIViewController {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         return saveButton
     }()
-    let imageView: UIImageView = {
+    let contactImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "person.fill.badge.plus")
         image.contentMode = .scaleAspectFit
@@ -80,19 +87,22 @@ class AddNewPerson: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    let buttonForAddContactImage: UIButton = {
+        let button = UIButton()
+        button.setTitle("Open Gallery", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
         dateTextField.inputView = datePicker
         setConstrain()
         view.backgroundColor = .white
-        
+
         // Button for add people in table
         saveButton.addTarget(self, action: #selector(saveTapedButton), for: .touchUpInside)
-        
         //Button on date Picer
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -126,8 +136,6 @@ class AddNewPerson: UIViewController {
         return formatted.string(from: date)   //<------????
     }
     @objc func saveTapedButton(){
-        
-        
         let namePerson = nameTextField.text
         if  namePerson != nil {
             nameTextField.text = textInputContextIdentifier
@@ -143,31 +151,51 @@ class AddNewPerson: UIViewController {
             phoneTextField.text = textInputContextIdentifier
         }else{
         }
-        var dobPerson = dateTextField.text
-        if  dobPerson != nil {
-            dobPerson = getDateFromPicker(date: datePicker.date)
-        }else{ dateTextField.text = ""
-        }
+//        var dobPerson = dateTextField.text
+//        if  dobPerson != nil {
+//            dobPerson = getDateFromPicker(date: datePicker.date.self)
+//        }else{ dateTextField.text = ""
+//        }
         //        guard let namePerson = nameTextField.text , !namePerson.isEmpty  else {return}
         //        nameTextField.text = ""
         //        guard let surnamePerson = surnameTextField.text, !surnamePerson.isEmpty  else {return}
         //        surnameTextField.text = ""
         //        guard let phoneNumperPerson = phoneTextField.text, !phoneNumperPerson.isEmpty  else {return}
         //        phoneTextField.text = ""
-        //        guard var dateBirthdayPerson = datePicerTextField.text, !dateBirthdayPerson.isEmpty  else {return}
-        //        dateBirthdayPerson = getDateFromPicker(date: datePicker.date)
-        //        datePicerTextField.text = ""
+        guard var dateBirthdayPerson = dateTextField.text, !dateBirthdayPerson.isEmpty  else {return}
+                dateBirthdayPerson = getDateFromPicker(date: datePicker.date)
+        dateTextField.text = ""
         
-        self.delegate?.addUserVC(user: Person(name: namePerson ?? "" , surname: surnamePerson!, phoneNumber: phoneNumperPerson ?? "", birthsday: dobPerson!))//, image: UIImage?))
+//       let result = CoreDataTest.instance.saveUser (name: namePerson ?? "" , surname: surnamePerson!, phoneNumber: phoneNumperPerson ?? "", age: dobPerson!)
+//        switch result {
+//        case .success(_): showSuccess()
+//        case .failure(let failure):
+//            showError(failure.localizedDescription)
+//        }
+        
+        self.delegate?.addUserVC(user: PersonDTO(name: namePerson ?? "" , surname: surnamePerson!, phoneNumber: phoneNumperPerson ?? "", age: dateBirthdayPerson ))/*, image: UIImage?))*/
         // Возвращаемся на предыдущий экран
         navigationController?.popViewController(animated: true)
     }
+    func showSuccess() {
+        let alert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    private func showError(_ error: String) {
+        let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+}
+extension AddNewPerson: UIImagePickerControllerDelegate, UINavigationBarDelegate {
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("imagePicerControler")
+    }
 }
 extension  AddNewPerson {
     func setConstrain(){
-       
-        
         view.addSubview(saveButton)
         NSLayoutConstraint.activate([
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -177,7 +205,7 @@ extension  AddNewPerson {
         ])
         view.addSubview(nameTextField)
         NSLayoutConstraint.activate([
-            nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
             nameTextField.heightAnchor.constraint(equalToConstant: 40),
@@ -196,22 +224,28 @@ extension  AddNewPerson {
             phoneTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31),
             phoneTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
             phoneTextField.heightAnchor.constraint(equalToConstant: 40),
-
+        ])
+        view.addSubview(mailTextField)
+        NSLayoutConstraint.activate([
+            mailTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 10),
+            mailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31),
+            mailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
+            mailTextField.heightAnchor.constraint(equalToConstant: 40),
         ])
         view.addSubview(dateTextField)
         NSLayoutConstraint.activate([
-            dateTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 10),
+            dateTextField.topAnchor.constraint(equalTo: mailTextField.bottomAnchor, constant: 10),
             dateTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
             dateTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dateTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
-        view.addSubview(imageView)
+        view.addSubview(contactImageView)
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.dateTextField.bottomAnchor, constant: 20),
+            contactImageView.topAnchor.constraint(equalTo: self.dateTextField.bottomAnchor, constant: 20),
            // imageView.bottomAnchor.constraint(equalTo: self.saveButton.topAnchor, constant: -20),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31),
-            imageView.heightAnchor.constraint(equalToConstant: 200)
+            contactImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
+            contactImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31),
+            contactImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }

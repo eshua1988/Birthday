@@ -19,10 +19,10 @@ final class MainTabBar: UITabBarController {
         
     }
     private func generateTabBar(){
-        let viewController = generateVC(vc: ViewController(), itemName: "View1", itemImage: "calendar.badge.clock")
-        let addBirthdayViewController = generateVC(vc: AddBirthdayViewController(), itemName: "Tasks", itemImage: "text.badge.checkmark")
+        let viewController = generateVC(vc: ViewController(), itemName: "Birthday", itemImage: "calendar.badge.clock")
+        let contactViewController = generateVC(vc: ContactViewController(), itemName: "Birthday Calendar", itemImage: "text.badge.checkmark")
         let setingVC = generateVC(vc: SetingViewController(), itemName: "Seting", itemImage: "gearshape.fill")
-        viewControllers = [viewController, addBirthdayViewController,setingVC]
+        viewControllers = [viewController, contactViewController,setingVC]
     }
      func generateVC(vc: UIViewController, itemName: String, itemImage: String) -> UINavigationController {
         let item = UITabBarItem(title: itemName, image: UIImage(systemName: itemImage), tag: 0)

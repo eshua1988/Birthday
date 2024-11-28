@@ -6,8 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		520DBC342CEBE0F7004D9309 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 520DBC332CEBE0F7004D9309 /* FSCalendar */; };
+		52BC43992CE7CC2100F69D6A /* Usersy+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC43982CE7CC2100F69D6A /* Usersy+CoreDataProperties.swift */; };
+		52BC439A2CE7CC2100F69D6A /* Usersy+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC43972CE7CC2100F69D6A /* Usersy+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		528D5D632CDA98D100AE8FD4 /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BC43972CE7CC2100F69D6A /* Usersy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usersy+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52BC43982CE7CC2100F69D6A /* Usersy+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Usersy+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520DBC342CEBE0F7004D9309 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +54,8 @@
 		528D5D5A2CDA98D100AE8FD4 = {
 			isa = PBXGroup;
 			children = (
+				52BC43972CE7CC2100F69D6A /* Usersy+CoreDataClass.swift */,
+				52BC43982CE7CC2100F69D6A /* Usersy+CoreDataProperties.swift */,
 				528D5D652CDA98D100AE8FD4 /* Birthday */,
 				528D5D642CDA98D100AE8FD4 /* Products */,
 			);
@@ -78,6 +89,7 @@
 			);
 			name = Birthday;
 			packageProductDependencies = (
+				520DBC332CEBE0F7004D9309 /* FSCalendar */,
 			);
 			productName = Birthday;
 			productReference = 528D5D632CDA98D100AE8FD4 /* Birthday.app */;
@@ -107,6 +119,9 @@
 			);
 			mainGroup = 528D5D5A2CDA98D100AE8FD4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				520DBC322CEBE0F7004D9309 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 528D5D642CDA98D100AE8FD4 /* Products */;
 			projectDirPath = "";
@@ -132,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52BC43992CE7CC2100F69D6A /* Usersy+CoreDataProperties.swift in Sources */,
+				52BC439A2CE7CC2100F69D6A /* Usersy+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		520DBC322CEBE0F7004D9309 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		520DBC332CEBE0F7004D9309 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 520DBC322CEBE0F7004D9309 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 528D5D5B2CDA98D100AE8FD4 /* Project object */;
 }

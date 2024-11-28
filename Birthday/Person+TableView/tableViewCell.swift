@@ -7,19 +7,32 @@
 
 import UIKit
 
-class tableViewCell: UITableViewCell{
+class tableViewCell: UITableViewCell {
     
     let contactImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person1")
+        imageView.image = UIImage(systemName:"persons1") //"person.fill.viewfinder")
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.frame.size.width/2
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
- 
+    let phoneImageView: UIImageView = {
+       let imageView = UIImageView()
+        //imageView.tintColor = .red
+        imageView.image = UIImage(systemName: "phone.fill")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    let mailImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "envelope.fill")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     var nameLable: UILabel = {
-        var nameLable = UILabel()
+        var nameLable = UILabel(text: "name")
         nameLable.font = UIFont.systemFont(ofSize: 16)
             //nameLable.font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
         nameLable.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -27,9 +40,8 @@ class tableViewCell: UITableViewCell{
         nameLable.translatesAutoresizingMaskIntoConstraints = false
         return nameLable
     }()
-   
     let phoneLable: UILabel = {
-        var phoneLable = UILabel()
+        var phoneLable = UILabel(text: "phone")
         phoneLable.numberOfLines = 0
         phoneLable.font = UIFont.systemFont(ofSize: 16)
         phoneLable.translatesAutoresizingMaskIntoConstraints = false
@@ -42,15 +54,17 @@ class tableViewCell: UITableViewCell{
         dateLable.translatesAutoresizingMaskIntoConstraints = false
         return dateLable
     }()
+  //  let phoneLable = UILabel(text: "PhoneNumber")
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.selectionStyle = .none
         setupConstrain()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setupConstrain(){
+    func setupConstrain() {
         self.addSubview(contactImageView)
         NSLayoutConstraint.activate([
             contactImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
@@ -58,7 +72,6 @@ class tableViewCell: UITableViewCell{
             contactImageView.heightAnchor.constraint(equalToConstant: 70),
             contactImageView.widthAnchor.constraint(equalToConstant: 70),
             contactImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
-            
         ])
         self.addSubview(nameLable)
         NSLayoutConstraint.activate([
@@ -77,7 +90,7 @@ class tableViewCell: UITableViewCell{
             dateLable.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             dateLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             dateLable.heightAnchor.constraint(equalToConstant: 20)
-        ])
+            ])
     }
 }
 
