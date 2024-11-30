@@ -27,48 +27,48 @@ class AddNewPerson: UIViewController {
         return date
     }()
     let nameTextField: UITextField = {
-        let nameTextField = UITextField()
-        nameTextField.layer.cornerRadius = 10
-        nameTextField.backgroundColor = .systemGray6
-        nameTextField.textAlignment = .center
-        nameTextField.placeholder = "Name person"
-        nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        let nameTextField = UITextField(placeholder: "Name person")
+//        nameTextField.layer.cornerRadius = 10
+//        nameTextField.backgroundColor = .systemGray6
+//        nameTextField.textAlignment = .center
+//        nameTextField.placeholder = "Name person"
+//        nameTextField.translatesAutoresizingMaskIntoConstraints = false
         return nameTextField
     }()
     let surnameTextField: UITextField = {
-        let surnameTextField = UITextField()
-        surnameTextField.layer.cornerRadius = 10
-        surnameTextField.backgroundColor = .systemGray6
-        surnameTextField.textAlignment = .center
-        surnameTextField.placeholder = "Surname person"
-        surnameTextField.translatesAutoresizingMaskIntoConstraints = false
+        let surnameTextField = UITextField(placeholder: "Surname person")
+//        surnameTextField.layer.cornerRadius = 10
+//        surnameTextField.backgroundColor = .systemGray6
+//        surnameTextField.textAlignment = .center
+//        surnameTextField.placeholder = "Surname person"
+//        surnameTextField.translatesAutoresizingMaskIntoConstraints = false
         return surnameTextField
     }()
     let phoneTextField: UITextField = {
-        let phoneTextField = UITextField()
-        phoneTextField.layer.cornerRadius = 10
-        phoneTextField.backgroundColor = .systemGray6
-        phoneTextField.placeholder = "Phone person"
-        phoneTextField.textAlignment = .center
-        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        let phoneTextField = UITextField(placeholder: "Phone person")
+//        phoneTextField.layer.cornerRadius = 10
+//        phoneTextField.backgroundColor = .systemGray6
+//        phoneTextField.placeholder = "Phone person"
+//        phoneTextField.textAlignment = .center
+//        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         return phoneTextField
     }()
     let mailTextField: UITextField = {
-        let emeilTextField = UITextField()
-        emeilTextField.layer.cornerRadius = 10
-        emeilTextField.backgroundColor = .systemGray6
-        emeilTextField.placeholder = "E-mail person"
-        emeilTextField.textAlignment = .center
-        emeilTextField.translatesAutoresizingMaskIntoConstraints = false
+        let emeilTextField = UITextField(placeholder: "E-mail person")
+//        emeilTextField.layer.cornerRadius = 10
+//        emeilTextField.backgroundColor = .systemGray6
+//        emeilTextField.placeholder = "E-mail person"
+//        emeilTextField.textAlignment = .center
+//        emeilTextField.translatesAutoresizingMaskIntoConstraints = false
         return emeilTextField
     }()
     let dateTextField: UITextField = {
-        let datePicer = UITextField()
-        datePicer.layer.cornerRadius = 10
-        datePicer.backgroundColor = .systemGray6
-        datePicer.placeholder = "Date person"
-        datePicer.textAlignment = .center
-        datePicer.translatesAutoresizingMaskIntoConstraints = false
+        let datePicer = UITextField(placeholder: "Date person")
+//        datePicer.layer.cornerRadius = 10
+//        datePicer.backgroundColor = .systemGray6
+//        datePicer.placeholder = "Date person"
+//        datePicer.textAlignment = .center
+//        datePicer.translatesAutoresizingMaskIntoConstraints = false
         return datePicer
     }()
     var saveButton: UIButton = {
